@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>US-PH temp
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-expand-lg bg-white sticky-top" style="border-bottom: 2px solid blue;">
+      <div class="container-fluid">
+        <a class="navbar-brand text-dark" href="{{ url_for('Index') }}"><b>Philippine-Datasets</b></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="d-flex justify-content-center"> <!-- Use d-flex and justify-content-center classes to center nav-links -->
+              <ul class="navbar-nav">
+                  <li class="nav-item">
+                      <a class="nav-link"  href="{{ url_for('Index') }}"><b>Dengue Dataset</b></a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="{{ url_for('ind2') }}"><b>DOH Human Resource (RegionX)</b></a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="p-4">
+        <div class="card-group">
+          <!-- Dentist Card -->
+          <div class="card border-primary">
+            <div class="card-header border-primary">
+              <h5 class="card-title"><b>Dentist</b></h5>
+            </div>
+            <div class="card-body text-right">
+              <p class="card-text"><b>{{ total_hr['TotalDentist'] }}</b> Dentists</p>
+            </div>
+          </div>
+      
+          <!-- Doctor Card -->
+          <div class="card border-primary">
+            <div class="card-header border-primary">
+              <h5 class="card-title"><b>Doctor</b></h5>
+            </div>
+            <div class="card-body text-right">
+              <p class="card-text"><b>{{ total_hr['TotalDoctor'] }}</b> Doctors</p>
+            </div>
+          </div>
+      
+          <!-- Medical Technologist Card -->
+          <div class="card border-primary">
+            <div class="card-header border-primary">
+              <h5 class="card-title"><b>Medical Technologist</b></h5>
+            </div>
+            <div class="card-body text-right">
+              <p class="card-text"><b>{{ total_hr['TotalMedicalTechnologist'] }}</b> Medical Technologists</p>
+            </div>
+          </div>
+      
+          <!-- Midwife Card -->
+          <div class="card border-primary">
+            <div class="card-header border-primary">
+              <h5 class="card-title"><b>Midwife</b></h5>
+            </div>
+            <div class="card-body text-right">
+              <p class="card-text"><b>{{ total_hr['TotalMidwife'] }}</b> Midwives</p>
+            </div>
+          </div>
+      
+          <!-- Nurse Card -->
+          <div class="card border-primary">
+            <div class="card-header border-primary">
+              <h5 class="card-title"><b>Nurse</b></h5>
+            </div>
+            <div class="card-body text-right">
+              <p class="card-text"><b>{{ total_hr['TotalNurse'] }}</b> Nurses</p>
+            </div>
+          </div>
+        </div>
+      
+        <div class="card-group my-4">
+          <!-- Dietitian Card -->
+          <div class="card border-primary">
+            <div class="card-header border-primary">
+              <h5 class="card-title"><b>Dietitian</b></h5>
+            </div>
+            <div class="card-body text-right">
+              <p class="card-text"><b>{{ total_hr['TotalDietitian'] }}</b> Dietitians</p>
+            </div>
+          </div>
+      
+          <!-- Pharmacist Card -->
+          <div class="card border-primary">
+            <div class="card-header border-primary">
+              <h5 class="card-title"><b>Pharmacist</b></h5>
+            </div>
+            <div class="card-body text-right">
+              <p class="card-text"><b>{{ total_hr['TotalPharmacist'] }}</b> Pharmacists</p>
+            </div>
+          </div>
+      
+          <!-- Physical Therapist Card -->
+          <div class="card border-primary">
+            <div class="card-header border-primary">
+              <h5 class="card-title"><b>Physical Therapist</b></h5>
+            </div>
+            <div class="card-body text-right">
+              <p class="card-text"><b>{{ total_hr['TotalPhysicalTherapist'] }}</b> Physical Therapists</p>
+            </div>
+          </div>
+      
+          <!-- Radiologic Technologist Card -->
+          <div class="card border-primary">
+            <div class="card-header border-primary">
+              <h5 class="card-title"><b>Radiologic Technologist</b></h5>
+            </div>
+            <div class="card-body text-right">
+              <p class="card-text"><b>{{ total_hr['TotalRadiologicTechnologist'] }}</b> Radiologic Technologists</p>
+            </div>
+          </div>
+      
+          <!-- X-ray Technologist Card -->
+          <div class="card border-primary">
+            <div class="card-header border-primary">
+              <h5 class="card-title"><b>X-ray Technologist</b></h5>
+            </div>
+            <div class="card-body text-right">
+              <p class="card-text"><b>{{ total_hr['TotalXrayTechnologist'] }}</b> X-ray Technologists</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mx-4">
+        <div class="col">
+          <div class="card border-primary">
+            <div class="card-header text-bg-primary">
+              <h5 class="card-title">Bar Chart of DOH Human Resouces by Profession (Region X)</h5>
+            </div>
+            <div class="card-body">
+            <strong>This bar chart features the comparison of number of medical professionals in Region X</strong><br><br>
+              <!-- bar chart here -->
+              <canvas id="barChart" height="260"></canvas>
+              <div id="legend"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card border-primary">
+            <div class="card-header text-bg-primary">
+              <h5 class="card-title">Medical Professionals Distribution(Private vs Public)</h5>
+            </div>
+            <div class="card-body">
+              <strong>This bar chart features the comparison of the number of medical professionals in Region X in both private and public institutions</strong><br><br>
+              <canvas id="pieChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Extract the data from the Flask variable
+    var total_hr_data = {{ total_hr|tojson|safe }};
+
+    // Get the canvas element
+    var ctx = document.getElementById('barChart').getContext('2d');
+
+    // Prepare data for Chart.js
+    var data = {
+        labels: ['Dentist', 'Doctor', 'Medical Technologist', 'Midwife', 'Nurse', 'Dietitian', 'Pharmacist', 'Physical Therapist', 'Radiologic Technologist', 'X-ray Technologist'],
+        datasets: [{
+            label: 'Total Number',
+            data: [
+                total_hr_data.TotalDentist,
+                total_hr_data.TotalDoctor,
+                total_hr_data.TotalMedicalTechnologist,
+                total_hr_data.TotalMidwife,
+                total_hr_data.TotalNurse,
+                total_hr_data.TotalDietitian,
+                total_hr_data.TotalPharmacist,
+                total_hr_data.TotalPhysicalTherapist,
+                total_hr_data.TotalRadiologicTechnologist,
+                total_hr_data.TotalXrayTechnologist
+            ],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.5)', // Dentist
+                'rgba(54, 162, 235, 0.5)', // Doctor
+                'rgba(255, 206, 86, 0.5)', // Medical Technologist
+                'rgba(75, 192, 192, 0.5)', // Midwife
+                'rgba(153, 102, 255, 0.5)', // Nurse
+                'rgba(255, 159, 64, 0.5)', // Dietitian
+                'rgba(255, 99, 132, 0.5)', // Pharmacist
+                'rgba(54, 162, 235, 0.5)', // Physical Therapist
+                'rgba(255, 206, 86, 0.5)', // Radiologic Technologist
+                'rgba(75, 192, 192, 0.5)'  // X-ray Technologist
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)'
+            ],
+            borderWidth: 1
+        }]
+    };
+
+    // Create the bar chart
+    var myBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+
+    // Add custom legend
+    var legendContainer = document.getElementById('legend');
+    var professions = data.labels;
+    var legendHTML = '';
+
+    for (var i = 0; i < professions.length; i++) {
+        legendHTML += '<div style="margin-right: 10px; display: inline-block;">';
+        legendHTML += '<div style="width: 20px; height: 20px; background-color: ' + data.datasets[0].backgroundColor[i] + '; border: 1px solid ' + data.datasets[0].borderColor[i] + '; display: inline-block;"></div>';
+        legendHTML += '<span style="margin-left: 5px;">' + professions[i] + '</span>';
+        legendHTML += '</div>';
+    }
+
+    legendContainer.innerHTML = legendHTML;
+</script>
+
+<script>
+    // Get the data passed from the backend (total_c)
+    var total_c = {{ total_c | tojson | safe }};
+    
+    console.log(total_c);  // Print total_c to the console for inspection
+
+    // Extract labels and values from the data
+    var labels = total_c.map(function (item) {
+        return item.Classification;
+    });
+
+    var values = total_c.map(function (item) {
+        return item.TotalNumber;
+    });
+
+    // Get the canvas element
+    var ctx = document.getElementById('pieChart').getContext('2d');
+
+    // Create the pie chart
+    var pieChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: labels,
+            datasets: [{
+                data: values,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.7)', // Color for Public
+                    'rgba(54, 162, 235, 0.7)'  // Color for Private
+                    // Add more colors if you have more classifications
+                ]
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Distribution of Medical Professionals'
+            }
+        }
+    });
+</script>
+  </body>
+</html>
